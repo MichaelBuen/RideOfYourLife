@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Domain.Models.AgeBracket">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAIAAAAAAAAAAAAACgAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AgeBracket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Models.AgeBracketLocalization">
+    <Position X="3.25" Y="8.75" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CIkAAAABAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AgeBracket.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AgeBracket" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.Models.Nationality">
+    <Position X="0.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAACAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Nationality.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Models.NationalityLocalization">
+    <Position X="3.5" Y="12" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAgAAAAAAAQAAAAAAAAAAAAAEEAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Nationality.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Nationality" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.Models.Reservation">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAABAEAAAAAAACAAAYACIAAAAAAGIgAACAA=</HashCode>
+      <FileName>Models\Reservation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ReservationAdditionals" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Domain.Models.ReservationAdditional">
+    <Position X="4.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgIAAACAA=</HashCode>
+      <FileName>Models\Reservation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Models.Title">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAEAAAAAAAAAAACAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Title.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Models.TitleLocalization">
+    <Position X="2.75" Y="5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAIAAAkAAAAAAAAAAAEEAAAAAAAAEAAAEAAA=</HashCode>
+      <FileName>Models\Title.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Title" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.Models.TitleDomainExtension">
+    <Position X="5.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Title.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Models.TextResource">
+    <Position X="0.5" Y="15.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAABAAAAAAAACAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\TextResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Domain.Models.TextResourceLocalization">
+    <Position X="3.75" Y="15.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAgAAAAAAAAAAAAAAAAAAAAAAEEAAQAEAAAAAAACAAA=</HashCode>
+      <FileName>Models\TextResource.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TextResource" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="Domain.Models.AgeBracketId">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\AgeBracket.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Domain.Models.TextResourceId">
+    <Position X="9.25" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ECgAAAAAAQUBAEAAIUAEAAAAAAkAAAARAAhCJgAAKAA=</HashCode>
+      <FileName>Models\TextResource.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,280 @@
+﻿fieldset { font-size: 13px; font-family : 'Calibri'}
+div.input { width: 380px; }
+div.amort { width: auto; }
+table, th, td { font-size: 13px; font-family : 'Calibri'; }
+
+
+/*input {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 5px;
+}*/
+
+
+fieldset {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+table.table {
+    margin: 20px;
+    color: 666;
+    font-size: 12px;
+    -moz-border-radius: 3px;
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    background: #eaebec;
+    border: #ccc 1px solid;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px #d1d1d1;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 0px #fff;
+}
+
+table.table tr.even td {
+    background: #f6f6f6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+    background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
+}
+
+table.table th {
+    padding: 21px 25px 22px 25px;
+    border-bottom: 1px solid #e0e0e0; border-top: 1px solid #fafafa;
+    background: #ededed;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -moz-linear-gradient(top, #ededed, #ebebeb);
+}
+
+table.table th:first-child {
+    padding-left: 20px;
+    text-align: left
+}
+
+table.table a:visited {
+    color: #999999;
+    font-weight: bold;
+    text-decoration: none
+}
+
+table.table a:active,
+table.table a:hover {
+    color: #bd5a35;
+    text-decoration: underline
+}
+
+table.table a:link {
+    color: #666;
+    font-weight: bold;
+    text-decoration: none
+}
+
+table.table tr {
+    padding-left: 20px;
+    text-align: center
+}
+
+table.table tr:first-child th:first-child {
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+table.table tr:first-child th:last-child {
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+table.table tr:last-child td {    border-bottom: 0 }
+
+table.table tr:last-child td:first-child {
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+table.table tr:last-child td:last-child {
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+table.table tr:hover td {
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+
+table.table tr td {
+    padding: 18px;
+    border-bottom: 1px solid #e0e0e0; border-left: 1px solid #e0e0e0; border-top: 1px solid #ffffff;
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+    background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+}
+
+table.table tr td:first-child {
+    padding-left: 20px;
+    border-left: 0;
+    text-align: left
+}
+
+
+
+
+fieldset {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+
+
+label {
+width: 40%;
+clear: left;
+text-align: left;
+vertical-align: central;
+white-space: nowrap;
+min-width: 5em;
+margin: 5px;
+}
+
+/*div.reservation-form {
+    width: 800px; 
+    margin:0 auto;
+}*/
+
+.centered-exactly {
+   width: 300px;
+   height: 300px;
+   position: absolute;
+   left: 50%;
+   top: 50%; 
+   margin-left: -150px;
+   margin-top: -150px;
+}
+
+div.reservation-detail-layout {
+    width: 70%; 
+    margin:0 auto;    
+}
+
+div.app-layout {
+    width: 1000px;
+    margin: 5px;
+}
+
+div.header {
+    background-color: #66b3ff
+}
+
+.app-layout input {
+    width: 200px;
+}
+
+.error {
+    font-weight: bold;
+    color: red;
+}
+
+
+tr.to-hover a {
+    visibility: hidden;
+}
+
+
+tr.to-hover:hover a {
+    visibility: visible;
+}
+
+
+div.important-format {
+    background-color: #ebf4fa
+}
+
+
+
+
+
+/* animations */
+
+
+/* you can also define the transition style
+   on the base class as well (.repeat-item) */
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  opacity:0;
+  height: 0px;
+}
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  opacity:1;
+   height: 30px;
+}
+.repeat-item {
+ 
+  background: lightblue;
+  margin-bottom: 5px;
+  height: 30px;
+}
+.delete {
+  float: right;
+}
+
+
+
+.header-style {
+    font-weight: bold;
+    font-size: 36px;
+    color: #EA3E16;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+}
+
+
+.subheader-style {
+    font-family: Verdana;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* table formatting */
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}

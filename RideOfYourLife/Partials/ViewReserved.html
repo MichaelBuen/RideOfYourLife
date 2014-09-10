@@ -1,0 +1,63 @@
+﻿<div ng-show="finishedLoading">
+    
+    <table>
+        <tr>
+            <td>{{resource.reservationId}} </td><td>: </td><td>{{reservation.reservationId}}</td>
+        </tr>
+
+        <tr>
+            <td>{{reservation.title}} {{reservation.guestName}}</td> 
+        </tr>
+
+        <tr>
+            <td>{{resource.emailAddress}} </td><td>: </td><td>{{reservation.emailAddress}}</td>    
+        </tr>    
+        
+        
+        <tr ng-show="resource.contactNumber.length > 0">
+            <td>{{resource.contactableTelephoneOrMobileNo}}</td><td>: </td><td>{{reservation.contactNumber}}</td>    
+        </tr>    
+
+        <tr ng-show="reservation.faxNumber.length > 0">
+            <td>{{resource.faxNumber}}</td><td>: </td><td>{{reservation.faxNumber}}</td>    
+        </tr>    
+    
+        <tr>
+            <td>{{resource.nationality}}</td><td>: </td><td>{{reservation.nationality}}</td>    
+        </tr>    
+    
+        
+        <tr>
+            <td>{{resource.dateOfRide}} </td><td>: </td><td>{{reservation.dateOfRide}}</td>    
+        </tr> 
+
+
+    </table>
+
+    <div ng-show="reservation.reservationAdditionals.length > 0">
+    
+        <br/>    
+
+        <table class="gridtable">
+            <thead>
+                <th>{{resource.guestName}}</th><th>{{resource.age}}<br/>({{resource.children}})</th><th>{{resource.nationality}}</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in reservation.reservationAdditionals">
+                    <td>{{item.guestName}}</td><td>{{item.ageBracket}}</td><td>{{item.nationality}}</td>
+                </tr>        
+            </tbody>
+    
+        </table>
+
+    </div>
+
+
+</div>
+
+
+<br/>
+
+<div style="text-align: left">
+    <button class="btn btn-info" ng-click="goToReservationForm()"><span class="glyphicon glyphicon-plus"></span> {{resource.makeNewReservation}}</button>   
+</div>

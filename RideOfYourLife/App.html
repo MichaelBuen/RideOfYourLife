@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html ng-app="RideApp" >
+    <head>
+        <!--[if lte IE 8]>
+      <script>
+        document.createElement('markdown');
+      </script>
+        <![endif]-->
+
+        <script src="Scripts/angular.min.js"></script>
+        <script src="Scripts/angular-ui-router.min.js"></script>
+    
+        <script src="Scripts/angular-animate.js"></script>                
+
+        <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+        
+
+        
+        <script src="Scripts/showdown.min.js"></script>
+        
+
+        <link href="Content/bootstrap.min.css" rel="stylesheet"/>  
+          
+        <link href="Theme/AquaTheme.css" rel="stylesheet"/>    
+        
+        
+                
+        
+        
+
+        <script src="app/Ride.js"></script>
+            
+        
+    
+        
+
+    </head>
+
+    <body  ng-app="RideApp" ng-controller="MainController" >
+        <div class="app-layout">
+        
+            <div style="text-align: right; width:1200px;"><select ng-model="currentLanguage" ng-options="item.languageCultureCode as item.language for item in availableLanguages" ng-change="switchLanguage(true)"></select></div>
+        
+            
+            <div ui-view="navigationPortion" style='float: left; width:200px; height: 768px; /*background-color: blue*/'></div>
+            <div ui-view="mainPortion" style='float: left; width: 700px'></div>			
+            
+        </div>
+        
+        
+    </body>
+</html>
+
+
+<!--http://stackoverflow.com/questions/23967785/angular-ui-ui-router-passing-data-and-calling-functions-on-child-ui-view-->

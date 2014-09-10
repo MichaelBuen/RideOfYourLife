@@ -1,0 +1,163 @@
+﻿        
+<div class="app-layout" ng-show="finishedLoadingResources">
+        
+
+    <div class="header-style" style="text-align: center">{{resource.appName}}</div>
+    <div class="subheader-style" style="text-align: center">{{resource.reservationForm}}</div>
+    
+    <br/>
+    <br/>
+    
+        
+    <div class="header">{{resource.personalInformation}} - {{resource.compulsoryField}} (<span style="color: red">*</span>)</div>
+    <form name="reservationHeaderForm" ng-submit="reserve()" novalidate>
+          
+        <div style="height: 10px"></div>
+    
+        <div>
+            <label>{{resource.title}}<select ng-model="reservation.titleId" ng-options="item.titleId as item.abbrev for item in titles"></select>&nbsp;&nbsp;{{resource.guestName}}</label>
+            <input ng-model="reservation.guestName"/>               
+        </div>
+
+        <div class="important-format">
+                    
+            <span style="color: red; font-style: italic; font-weight: bold; text-align: left">{{resource.reservationImportant}}</span>
+            {{resource.reservationImportantMessage}}
+                    
+                    
+        </div>
+
+                    
+        <div>
+            <label>{{resource.emailAddress}}</label>
+            <input required name="emailAddress" ng-model="reservation.emailAddress"/>
+            <span style="color: red">*({{resource.correspondenceEmailAddress}})</span>
+            <span class="error" ng-show="!reservationHeaderForm.emailAddress.$valid && !reservationHeaderForm.emailAddress.$pristine">{{resource.requiredWarning}}</span>
+        </div>    
+                    
+        <div>
+            <label>{{resource.faxNumber}}</label>
+            <input name="faxNumber" ng-model="reservation.faxNumber"/>            
+        </div>    
+                    
+                    
+        <div>
+            <label>{{resource.contactableTelephoneOrMobileNumber}}</label>
+            <input ng-model="reservation.contactNumber"/>
+        </div>
+                    
+        <div>
+            <label>{{resource.nationality}}</label>
+                    
+            <select required  name="nationalityId" ng-model="reservation.nationalityId" ng-options="item.nationalityId as item.nationalityName for item in nationalities">
+                <option value=""></option>
+            </select>
+            <span style="color: red">*</span>
+            <span class="error" ng-show="reservationHeaderForm.nationalityId.$invalid && !reservationHeaderForm.nationalityId.$pristine">{{resource.requiredWarning}}</span>
+                    
+                    
+        </div>
+                    
+
+            
+            
+            
+        <br/>
+            
+        <div class="header">{{resource.reservationDetails}} - {{resource.reservationDetailsOtherMessage}}</div>
+        
+        <br/>
+                
+        <div>
+            <label style="float:left">{{resource.dateOfRide}}</label> 
+                
+                
+            <p class="input-group" style="width: 200px">
+                    
+                <input type="text" class="form-control" datepicker-popup="{{format}}" 
+                        ng-model="reservation.dateOfRide" is-open="opened" min-date="minDate" max-date="'2015-06-22'" 
+                        datepicker-options="dateOptions" date-disabled="disabled(date, mode)" 
+                        close-text="Close" />
+                    
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+                
+
+        </div>
+            
+            
+        <div class="reservation-detail-layout">
+                
+            <table style="width: 100%" ng-show="reservation.reservationAdditionals.length > 0" class="table-bordered">
+                <thead>
+                    <th></th>
+                    <th></th>                            
+                    <th>{{resource.guestName}}</th>
+                    <th>{{resource.age}}<br/>({{resource.children}})</th>
+                    <th>{{resource.nationality}}</th>
+                        
+                </thead>
+                <tbody>
+                    <tr ng-repeat="guest in reservation.reservationAdditionals" ng-form="reservationDetailSubForm" class="to-hover repeat-item">
+                            
+                        <td><a ng-click="removeOtherReservation($index)"><span class="glyphicon glyphicon-remove"></span></a></td>
+
+                        <td>{{$index+1}}. </td> 
+                        <td><input name="guestName" ng-model="guest.guestName"/></td>
+                        <td><select ng-model="guest.ageBracketId" ng-options="item.ageBracketId as item.ageIndicator for item in ageBrackets"/></td>
+                        <td style="width: 50%">
+                                
+                                    
+                            <select required name="nationalityId" ng-model="guest.nationalityId" ng-options="item.nationalityId as item.nationalityName for item in nationalities">
+                                <option value=""></option>    
+                            </select>
+                            <span style="color: red">*</span>
+                                    
+                            <span class="error" 
+                                    ng-show="
+                                    (reservationDetailSubForm.nationalityId.$invalid && !reservationDetailSubForm.nationalityId.$pristine) 
+                                    || ($parent.alreadySubmitted && guest.nationalityId == undefined) 
+                                    ">{{resource.requiredWarning}}</span>
+                                    
+                                                                                                            
+                        </td>
+
+                            
+                    </tr>  
+
+                </tbody>                              
+            </table>
+                    
+                
+        </div>
+            
+
+        <br/>
+        <button type="button" class="btn btn-default" ng-click="addGuest()"><span class="glyphicon glyphicon-user"></span> {{resource.addGuest}}</button>   
+
+
+        <hr/>
+            
+        <div style="text-align: right">
+            <button type="submit" class="btn btn-info">{{resource.reserve}} <span class="glyphicon glyphicon-chevron-right"></span></button>
+        </div>
+                
+        <div style="color: red; font-weight: bold">{{resource.termsAndConditions}}</div>    
+        
+        <markdown ng-model="resource.termsAndConditionsList"></markdown>
+        
+        <div style="background-color: #ebf4fa; border: 2px solid"><markdown ng-model="resource.bookingWarning"></markdown></div>
+            
+    </form>               
+
+</div>
+        
+    
+<div ng-cloak ng-hide="finishedLoadingResources" class="centered-exactly">
+    <img src="app/Images/cloud.gif"  />
+</div>
+    
+        
+        
