@@ -27,23 +27,31 @@ namespace DomainMapping.SessionMapper
             var mapper = new NHibernate.Mapping.ByCode.ModelMapper();
 
 
-            mapper.AddMappings(new[]
-                {
-                    typeof(TitleMapping), 
-                    typeof(TitleLocalizationMapping), 
+            //mapper.AddMappings(new[]
+            //    {
+            //        typeof(TitleMapping), 
+            //        typeof(TitleLocalizationMapping), 
                     
-                    typeof(TextResourceMapping), 
-                    typeof(TextResourceLocalizationMapping),
+            //        typeof(TextResourceMapping), 
+            //        typeof(TextResourceLocalizationMapping),
                     
-                    typeof(NationalityMapping),
-                    typeof(NationalityLocalizationMapping),
+            //        typeof(NationalityMapping),
+            //        typeof(NationalityLocalizationMapping),
 
-                    typeof(AgeBracketMapping),
-                    typeof(AgeBracketLocalizationMapping),
+            //        typeof(AgeBracketMapping),
+            //        typeof(AgeBracketLocalizationMapping),
 
-                    typeof(ReservationMapping),
-                    typeof(ReservationAdditionalMapping)
-                });
+            //        typeof(ReservationMapping),
+            //        typeof(ReservationAdditionalMapping)
+            //    });
+
+
+            mapper.AddMappings
+                (
+                    typeof(Mapper).Assembly.GetTypes()
+                        .Where(x => x.BaseType.IsGenericType
+                                    && x.BaseType.GetGenericTypeDefinition() == typeof(NHibernate.Mapping.ByCode.Conformist.ClassMapping<>))
+                );
 
 
             var cfg = new NHibernate.Cfg.Configuration();
