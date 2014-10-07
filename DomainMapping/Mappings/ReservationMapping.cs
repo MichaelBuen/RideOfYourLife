@@ -47,15 +47,16 @@ namespace DomainMapping.Mappings
             //    relType => relType.OneToMany()
             //    );
 
-            Bag(x => x.ReservationAdditionals,               
-                rel =>
+            Bag(property => property.ReservationAdditionals,
+                collectionMapping =>
                 {
-                    rel.Cache(x => x.Usage(CacheUsage.ReadWrite));                                    
-                    rel.Key(k => k.Column("ReservationId"));
-                    rel.Inverse(true);
-                    rel.Cascade(Cascade.All| Cascade.DeleteOrphans);
+                    collectionMapping.Cache(x => x.Usage(CacheUsage.ReadWrite));
+                    collectionMapping.Key(k => k.Column("ReservationId"));
+
+                    collectionMapping.Inverse(true);
+                    collectionMapping.Cascade(Cascade.All);                                       
                 },
-                relType => relType.OneToMany()
+                mapping => mapping.OneToMany()
                 );
         }
     }

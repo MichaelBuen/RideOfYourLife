@@ -34,9 +34,6 @@ namespace Marshaller.TheServices
         public ReservationResultDto Post(ReservationPersistDto reservationPersistDto)
         {            
             var reservationId = Reservation.Reserve(this.DomainSession, reservationPersistDto);
-
-            ReservationAdditional x;
-            x.R
             
             return new ReservationResultDto {ReservationId = reservationId};
 

@@ -78,14 +78,19 @@ namespace Domain.Models
                             Nationality = new Nationality { NationalityId = additional.NationalityId }
                         };
 
+               
                     r.ReservationAdditionals.Add(a);                    
                 }
 
-                
-
 
                 session.Save(r);
+
+
+
+
+
                 tx.Commit();
+
 
 
                 return r.ReservationId;
