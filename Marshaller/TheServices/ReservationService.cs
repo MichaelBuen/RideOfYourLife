@@ -24,7 +24,7 @@ namespace Marshaller.TheServices
         public ReservationViewDto Get(ReservationViewDto request)
         {
             var dto = Reservation.GetViewable(this.DomainSession, request);
-
+            
             return dto;
         }
 
@@ -32,16 +32,16 @@ namespace Marshaller.TheServices
         //[ServiceStack.ServiceInterface.Cors.EnableCors]
         // [ServiceStack.ServiceInterface.Authenticate]
         public ReservationResultDto Post(ReservationPersistDto reservationPersistDto)
-        {
+        {            
+            var reservationId = Reservation.Reserve(this.DomainSession, reservationPersistDto);
+
+            ReservationAdditional x;
+            x.R
             
-            var reservation = Reservation.Reserve(this.DomainSession, reservationPersistDto);
-            
-            return new ReservationResultDto {ReservationId = reservation.ReservationId};
+            return new ReservationResultDto {ReservationId = reservationId};
 
 
-            // var ra = new ReservationAdditional(); // compile error. DDD: we cannot create a child entity by itself, it must be created from aggregate root
-            
-
+            // var ra = new ReservationAdditional(); // compile error. DDD: we cannot create a child entity by itself, it must be created from aggregate root            
         }
     }
 

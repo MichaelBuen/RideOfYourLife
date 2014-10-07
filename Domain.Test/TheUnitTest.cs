@@ -173,7 +173,7 @@ namespace Domain.Test
             }
         }
 
-        
+
 
         [TestMethod]
         public void Test_Reservation_ReserveFromDto()
@@ -196,12 +196,12 @@ namespace Domain.Test
                         }
                 };
 
-            using (var session = Mapper.SessionFactory.OpenSession())            
+            using (var session = Mapper.SessionFactory.OpenSession())
             {
-                var reservation = Reservation.Reserve(session, reservationDto);
+                var reservationId = Reservation.Reserve(session, reservationDto);
 
 
-                Assert.IsTrue(reservation.ReservationId > 0);
+                Assert.IsTrue(reservationId > 0);
 
                 var ageBracket = session.Load<AgeBracket>(AgeBracketId.YoungTeenager);
 

@@ -9,7 +9,12 @@ namespace Domain.Models
 {
     public class Reservation
     {
-        public virtual int ReservationId { get; protected internal set; }
+        // Construction of an object must goes through DDD language, example: Reservation.Reserve
+        protected internal Reservation() { }
+
+
+
+        protected internal virtual int ReservationId { get; set; }
 
         public virtual Title Title { get; protected internal set; } // Not Required but always has a default value, i.e., Mr
 
@@ -40,15 +45,8 @@ namespace Domain.Models
         }
 
 
-        public virtual void AddAdditionalReservation(ReservationAdditional additional)
-        {
-            // additional.Reservation = this;
-            this.ReservationAdditionals.Add(additional);
-        }
 
-
-
-        public static Reservation Reserve(ISession session, ReservationPersistDto reservationPersist)
+        public static int Reserve(ISession session, ReservationPersistDto reservationPersist)
         {
             // We can do validation, business rules and business logic here
 
@@ -80,18 +78,17 @@ namespace Domain.Models
                             Nationality = new Nationality { NationalityId = additional.NationalityId }
                         };
 
-                    r.ReservationAdditionals.Add(a);
-
+                    r.ReservationAdditionals.Add(a);                    
                 }
 
-
+                
 
 
                 session.Save(r);
                 tx.Commit();
 
 
-                return r;
+                return r.ReservationId;
             }
 
         }
@@ -202,17 +199,50 @@ namespace Domain.Models
 
     public class ReservationAdditional
     {
+
+        // protected internal constructor shall at least enforce creating child entity through aggregate root
+        // http://thatextramile.be/blog/2009/10/why-nhibernate-entities-need-a-public-or-protected-parameterless-constructor/
+        protected internal ReservationAdditional() { }
+    
+
+
+        
         // We wanted DDD and we wanted to enforce accessing everything through aggregate root, we should use Inverse=false, and therein lies the problem;
         // Inverse=false inserts child entities with their parentid initially set to null, then are updated only after their parent is added,
-        // aside from this is a performance issue, it's worrying to have an orphaned entity
+        // aside from this is a performance issue, it's worrying to have an orphaned entity.
         // Unfortunately, bi-directional (Inverse=true) mapping is inevitable in NHibernate
         // http://blog.jonathanoliver.com/nhibernate-inverse-and-object-associations/
         // protected internal shall at least enforce adding a child entity through aggregate root as we cannot set/update the child's parent outside the domain if the access is protected 
+
+
+        /// <summary>
+        ///  !!!ALERT!!! Please don't access me directly, access me from aggregate root.
+        ///  Please be DDD
+        /// </summary>
+        /// Sadly this doesn't work when the class is referenced from project. Would work if referenced as DLL:
+        // [System.ComponentModel.Browsable(false), System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]        
         public virtual Reservation Reservation { get; protected internal set; } // we put this on top, to emphasize that this domain model is not an aggregate root
 
 
+        // Ideally, there should be no Reservation reference in Value objects such as ReservationAdditional
+        // However, NHibernate can't facilitate that.
+        // And also, making the whole Reservation reference as protected internal is not allowed, this doesn't work:
+        // protected internal virtual Reservation Reservation { get; set; } 
 
-        public virtual int ReservationAdditionalId { get; protected internal set; }
+
+        
+
+
+        /*         
+           When Eric Evans talks about "entities have identity, Value Objects do not", he's not talking about an ID column in the database - he's talking about identity as a *concept.*
+           VOs have no conceptual identity. That doesn't mean that they shouldn't have persistence identity. Don't let persistence implementation cloud your understanding of Entities vs VOs. 
+         
+           -- http://stackoverflow.com/questions/949320/ddd-value-objects-and-orm/955218#955218          
+        */
+        // ReservationAdditional is a Value Object, it has no conceptual identity, but has persistence identity.
+        // We can enforce ReservationAdditional object not to have conceptual identity, by making the getter internal too
+        protected internal virtual int ReservationAdditionalId { get; set; }
+
 
         public virtual string GuestName { get; protected internal set; }
 
@@ -221,8 +251,11 @@ namespace Domain.Models
         public virtual Nationality Nationality { get; protected internal set; } // Required
 
 
-        // protected internal constructor shall at least enforce creating child entity through aggregate root
-        // http://thatextramile.be/blog/2009/10/why-nhibernate-entities-need-a-public-or-protected-parameterless-constructor/
-        protected internal ReservationAdditional() { }
+        // See difference of Entity vs Value. When an entity becomes a Value object
+    
+    
     }
+
+
+
 }
